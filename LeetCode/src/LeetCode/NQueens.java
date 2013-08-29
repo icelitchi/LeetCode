@@ -6,11 +6,11 @@ import java.util.Arrays;
 public class NQueens {
 	
 	
-    public int totalNQueens(int n) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        return 0;
-    }
+//    public int totalNQueens(int n) {
+//        // Start typing your Java solution below
+//        // DO NOT write main() function
+//        return 0;
+//    }
 	//回溯
 //	   效率问题？
 	  public ArrayList<String[]> solveNQueens(int n) {

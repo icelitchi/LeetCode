@@ -13,7 +13,14 @@ public class SimplifyPath {
     		if(subpaths[i].equals(".")||subpaths[i].equals("")){
     			continue;
     		}else if(subpaths[i].equals("..")){
-    			s.pop();
+    		if(!s.empty()){
+    			String p=s.peek();
+    			if(!p.equals(".."))
+    				s.pop();
+    			else
+    				s.push("..");
+    		}
+    			
     		}else{
     			s.push(subpaths[i]);
     		}
@@ -23,6 +30,8 @@ public class SimplifyPath {
     		sb.insert(0, s.pop());
     		sb.insert(0, "/");
     	}
+    	if(sb.length()==0)
+    		sb.append("/");
     	return sb.toString();
         
     }

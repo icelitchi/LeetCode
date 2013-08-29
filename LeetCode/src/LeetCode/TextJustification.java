@@ -38,6 +38,16 @@ public class TextJustification {
 				for (int i = 0; i < blank; i++) {
 					sb.append(' ');
 				}
+			}else if(end==n){
+				for (int i = index; i < end; i++) {
+					sb.append(words[i]);
+					if (i < end - 1)
+						sb.append(' ');
+				}
+			while(sb.length()<L){
+				sb.append(' ');
+			}
+				
 			} else {
 				int average = blank / (end - 1 - index);
 				StringBuffer sb_blank = new StringBuffer();
