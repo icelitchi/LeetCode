@@ -2,7 +2,7 @@ package ds.tree.b;
 
 import java.util.Comparator;
 
-//关键码就用int表示
+//鍏抽敭鐮佸氨鐢╥nt琛ㄧず
 public class BTree<Key> {
 	private int ways;
 	private BTreeNode<Key> root;

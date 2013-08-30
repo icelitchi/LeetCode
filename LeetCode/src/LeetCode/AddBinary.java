@@ -16,7 +16,7 @@ public class AddBinary {
 			if (index < lb) {
 				m = (b.charAt(lb-index-1) == '1') ? 1 : 0;
 			}
-			// �Ϳ� �ͣ����ÿ��Ǹ������?
+
 			switch (m + n + q) {
 			case 0:
 				q = 0;
