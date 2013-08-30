@@ -9,7 +9,7 @@ package LeetCode;
 //You may assume no duplicate exists in the array.
 public class SearchRotatedSortedArray {
     public int search(int[] A, int target) {
-        int result;
+
         int low=0;
         int high=A.length-1;
         while(low<high){
@@ -22,16 +22,22 @@ public class SearchRotatedSortedArray {
         		else 
         			return mid;
         	}else if(target<A[low]){
-        		if(A[low]<A[mid]){
-        			
-        		}else{
-        			
-        		}
+        		if(target<A[mid]){
+        			if(A[low]<A[mid]){
+        				low=mid+1;
+        			}
+        			else{
+        				high=mid-1;
+        			}
+        		}else if(target>A[mid]){
+        			low=mid+1;
+        		}else
+        			return mid;
         	}else
         		return low;
         
         }
-        return 0;
+        return -1;
         
     }
 

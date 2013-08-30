@@ -34,7 +34,7 @@ public class MinimumWindowSubstring {
     					if(isFirst(c)){
     						int second=mapSecond();
     						if(i-second<end-start){
-    							start
+    							//start
     						}
     						 
     					}
