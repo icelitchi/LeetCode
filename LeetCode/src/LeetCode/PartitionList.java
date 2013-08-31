@@ -2,7 +2,7 @@ package LeetCode;
 
 public class PartitionList {
 	//遍历，将小于和大于的分别放在两个list里，最后合并
-	public ListNode partitionList(ListNode head,int k){
+	public ListNode partition(ListNode head,int x){
 		ListNode ls=new ListNode(0);
 		ListNode le=null;
 		
@@ -10,7 +10,7 @@ public class PartitionList {
 		ListNode ge=null;
 		ListNode p=head;
 		while(p!=null){
-			if(p.val<k){
+			if(p.val<x){
 				if(ls.next==null)
 				{
 					ls.next=p;		
