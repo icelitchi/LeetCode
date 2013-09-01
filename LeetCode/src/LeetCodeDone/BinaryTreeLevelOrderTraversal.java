@@ -2,6 +2,7 @@ package LeetCodeDone;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Deque;
+import java.util.Queue;
 
 public class BinaryTreeLevelOrderTraversal {
 
@@ -11,32 +12,32 @@ public class BinaryTreeLevelOrderTraversal {
 	//！！！注意queue 和 stack 的操作不同
 	  public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
 		  ArrayList<ArrayList<Integer>> result=new ArrayList<ArrayList<Integer>>();
-		  ArrayList<Integer>  currentLevel=null;
-		  int nodeNum=0;//访问的node数(先将上一次null node的子node)
-		  int level=0;//当前层数，root为0
-		  int nullNodeNum=0;//当前层有的空node个数
-		  Deque<TreeNode> queue=new  LinkedList<TreeNode>();
-           queue.addLast(root);
+		if(root==null)
+			return result;
+	
+		  Queue<TreeNode> queue=new  LinkedList<TreeNode>();
+		  Queue<TreeNode> nextqueue=new  LinkedList<TreeNode>();
+           queue.add(root);
+           ArrayList<Integer>  currentLevel=new ArrayList<Integer>();
            while(!queue.isEmpty()){
-        	   nodeNum++;
-        	//换层
-        	   if(nodeNum>=Math.pow(2, level)){
-        		   level++;
-        		   if(currentLevel!=null&&currentLevel.size()>0)
-        			   result.add(currentLevel);
-        		   currentLevel=new  ArrayList<Integer>();
-        		   nullNodeNum=nullNodeNum*2;
-        		   nodeNum+=nullNodeNum;
-        	   }
+
         	  //处理node
-        	   TreeNode node=queue.pollFirst();
-        	   if(node==null){
-        		   nullNodeNum+=1;
-        	   }else{
-        		   queue.addLast(node.left);
-        		   queue.addLast(node.right);
-        		   currentLevel.add(node.val);
+        	   TreeNode node=queue.poll();
+        	   currentLevel.add(node.val);
+      
+        	   if(node.left!=null)
+        		   nextqueue.add(node.left);
+        	   if(node.right!=null)
+        		   nextqueue.add(node.right);
+        	   
+        	   if(queue.isEmpty()){
+        		   Queue temp=queue;
+        		   queue=nextqueue;
+        		   nextqueue=temp;
+        		   result.add(currentLevel);
+        		   currentLevel=new ArrayList<Integer>();
         	   }
+        	
         	   
            }
            return result;

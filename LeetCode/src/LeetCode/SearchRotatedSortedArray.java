@@ -1,5 +1,7 @@
 package LeetCode;
 
+import java.util.Arrays;
+
 //Suppose a sorted array is rotated at some pivot unknown to you beforehand.
 //
 //(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
@@ -12,18 +14,23 @@ public class SearchRotatedSortedArray {
 
         int low=0;
         int high=A.length-1;
-        while(low<high){
+        while(low<=high){
         	int mid=(low+high)>>>1;
         	if(target>A[low]){
-        		if(target>A[mid])
-        			low=mid+1;
+        		
+        		if(target>A[mid]){
+        			if(A[mid]>=A[low])
+        				low=mid+1;
+        			else
+        				high=mid-1;
+        		}
         		else if(target<A[mid])
         			high=mid-1;
         		else 
         			return mid;
         	}else if(target<A[low]){
         		if(target<A[mid]){
-        			if(A[low]<A[mid]){
+        			if(A[low]<=A[mid]){
         				low=mid+1;
         			}
         			else{

@@ -33,6 +33,7 @@ public class EditDistance {
     	return Math.min(Math.min(d1, d2), d3);
     }
     //增删的cost是1，改的cost是2
+    //是2是1看定义
     int substituteCost(char a,char b){
     	if(a==b)
     		return 0;

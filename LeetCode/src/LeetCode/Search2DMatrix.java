@@ -1,10 +1,14 @@
 package LeetCode;
 
+import java.util.Arrays;
+
 public class Search2DMatrix {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	
+		Search2DMatrix test=new Search2DMatrix();
+		int[][] matrix={{1}};
+		test.searchMatrix(matrix, 2);
 	}
 
 	//拍好序的矩阵
@@ -16,7 +20,7 @@ public class Search2DMatrix {
     	
     	//step 1 折半查找在哪一行
     	int targetline=0;
-    	if(target<matrix[0][0]){
+    	if(target<matrix[0][0]||target>matrix[line-1][colunm-1]){
     		return false;
     	}else if(target>=matrix[line-1][0]){
     		targetline=line-1;
@@ -35,7 +39,8 @@ public class Search2DMatrix {
     	//step 2 在锁定行折半查找
     	int low=0;
     	int high=colunm-1;
-    	while(low<high){
+    	//！！！折半查找一定要有等号
+    	while(low<=high){
     		 int mid=(low+high)/2;
     		if(target>matrix[targetline][mid]){
     			low=mid+1;
@@ -45,7 +50,8 @@ public class Search2DMatrix {
     			return true;
     		}
     	}
+
     	
-        return true;
+        return false;
     }
 }
