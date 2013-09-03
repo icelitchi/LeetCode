@@ -11,7 +11,10 @@ public class CombinationSum {
 
 
 	public static void main(String[] args) {
-
+		CombinationSum test=new CombinationSum();
+		int[] c={1};
+		
+		test.combinationSum(c, 1);
 	}
     public ArrayList<ArrayList<Integer>> combinationSum(int[] candidates, int target) {
 
