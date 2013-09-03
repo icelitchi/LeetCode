@@ -7,13 +7,13 @@ public class NextPermutation {
 		   int tempMax=num[num.length-1];
 		   
 		 //从后往前扫	 局部调整
-		   int i;//从后往前 第一个非增的数的索引
+		   int i;//从后往前 第一个非增的数的索引 第一个逆序对
 		   for(i=num.length-2;i>=0&&!doneflag;i--){
 			   if(num[i]>=tempMax){
 				   tempMax=num[i];
 			   }
 			   else{
-				
+				//找到 逆序对 ab， 将 后面的 书中第一个比 a大的数与a交换 
 				   for(int j=num.length-1;j>=0&&j>=i-1&&!doneflag;j--){
 					   if(num[j]>num[i]){
 						   int temp=num[j];
@@ -23,14 +23,14 @@ public class NextPermutation {
 					   }
 						   
 				   }
-				   
+				   //然后应该倒转 从b开始的数组
 				   
 				   
 			   }
 				   
 		   }
 		   //如果  局部调整   反转 调整位置后面的数组
-		   //此时 i 为 调整位置的前一个 位子，所以需反转的素组启示index是i+2
+		   //此时 i 为 调整位置的前一个 位子，所以需反转的素组 起始index是i+2
 		   
 		   //如果 未局部调整 反转整个数组，此时i=-1
 		   int startindex=0;
@@ -46,9 +46,7 @@ public class NextPermutation {
 	        
 	    }
 
-	/**
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
 		NextPermutation test=new NextPermutation();
 		 int[] a={3,2,1};

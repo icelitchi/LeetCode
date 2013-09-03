@@ -5,16 +5,14 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-//可重复的背包问题
-//所选货物的值==target
-public class CombinationSum {
-
+public class CombinationSumII {
 
 	public static void main(String[] args) {
 
-	}
-    public ArrayList<ArrayList<Integer>> combinationSum(int[] candidates, int target) {
 
+	}
+	
+    public ArrayList<ArrayList<Integer>> combinationSum2(int[] candidates, int target) {
     	ArrayList<ArrayList<Integer>>  comb=new ArrayList<ArrayList<Integer>>();
     	Arrays.sort(candidates);
     	int num=candidates.length;
@@ -43,10 +41,15 @@ public class CombinationSum {
     						r=new ArrayList<int[]>();
     					for(int j=0;j<r.size();j++){
     						int[] c=Arrays.copyOf(r.get(i), num);
-    						c[i]++;
-    						r.add(c);
+    						if(c[i]==0){
+    							c[i]++;
+    							r.add(c);
+    						}
+    						
+    						
     					}
-    					map.put(sum, r);
+    					if(r.size()>0)
+    						map.put(sum, r);
     						
     				}
     			}
@@ -71,4 +74,5 @@ public class CombinationSum {
     	return comb;
         
     }
+
 }
