@@ -11,6 +11,9 @@ public class LetterCombinationsofaPhoneNumber {
     	 ArrayList<String> words=new  ArrayList<String> ();
     	 if(digits!=null&&digits.length()>0)
     		letterCombinations(0,new char[digits.length()],digits,words);
+    	 else  if(digits!=null&&digits.length()==0){
+    		 words.add("");
+    	 }
     	 return words;
     }
     
