@@ -12,9 +12,9 @@ public class CombinationSum {
 
 	public static void main(String[] args) {
 		CombinationSum test=new CombinationSum();
-		int[] c={1};
+		int[] c={1,2,3,7,9};
 		
-		test.combinationSum(c, 1);
+		test.combinationSum(c, 100);
 	}
     public ArrayList<ArrayList<Integer>> combinationSum(int[] candidates, int target) {
 
@@ -45,7 +45,9 @@ public class CombinationSum {
     					if(r==null)
     						r=new ArrayList<int[]>();
     					for(int j=0;j<r.size();j++){
-    						int[] c=Arrays.copyOf(r.get(i), num);
+    						int[] c=new int[num];
+    						int[] temp=r.get(j);
+    						for(int k=0;k<num;k++)c[k]=temp[k];
     						c[i]++;
     						r.add(c);
     					}
@@ -54,6 +56,7 @@ public class CombinationSum {
     				}
     			}
     		}
+    		sum++;
     	}
     	
     	ArrayList<int[]> r=map.get(target);

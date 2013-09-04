@@ -1,5 +1,9 @@
 package LeetCodeDone;
 
+//返回index
+//方法一：n*n的暴力算法
+//（若拍好序）方法二n：先对number排序，从两边扫，和>target,右指针--；和<target,左指针++
+//方法三：用map存放number和index对，map搜索remainder在map中有没有
 public class TwoSum {
 
 	   public int[] twoSum(int[] numbers, int target) {
@@ -19,4 +23,7 @@ public class TwoSum {
 		   }
 	        return result;
 	    }
+	   
+	   
+	   //
 }

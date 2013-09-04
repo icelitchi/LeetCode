@@ -21,18 +21,24 @@ public class Sum4 {
     	ArrayList<ArrayList<Integer>> sums=new ArrayList<ArrayList<Integer>>();
     	Arrays.sort(num);
     	for(int i=0;i<num.length-3;i++){
+    		if(i>0&&num[i]==num[i-1])//重复!!!!!!
+    			continue;
     		for(int j=i+1;j<num.length-2;j++){
+    			if(j>i+1&&num[j]==num[j-1])//重复!!!!!! i+1！！！
+        			continue;
     			for(int k=j+1;k<num.length-1;k++){
+    				if(k>j+1&&num[k]==num[k-1])
+            			continue;
     				int l=num.length-1;
     				int sum=num[i]+num[j]+num[k]+num[l];
     				if(sum<target){
     					continue;
     				}
-    				while(sum>target&&l>j){
+    				while(sum>target&&l>k){
     					l--;
     					sum=num[i]+num[j]+num[k]+num[l];
     				}
-    				if(sum==target){
+    				if(sum==target&&l>k){
     					ArrayList<Integer> e=new ArrayList<Integer>();
     					e.add(num[i]);
     					e.add(num[j]);
