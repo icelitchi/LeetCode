@@ -6,47 +6,60 @@ public class WildcardMatching {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		WildcardMatching t=new WildcardMatching();
+		System.out.print(t.isMatch("bbabb", "?**?"));
 
 	}
+	//大数据内存溢出，时间超出//同样的方法java过不了，c++能过
 	//s string
 	//p pattern
 	//只考虑* 和 ？的匹配
-	//不晓得动态规划能不能做
+	//动态规划  能做！！！
+	//http://www.iteye.com/topic/1131749
     public boolean isMatch(String s, String p) {
       int a=0,b=0;
-      boolean[][] match=new boolean[p.length()][s.length()];
-      if(p.charAt(0)=='?'||p.charAt(0)==s.charAt(0))
+      boolean[][] match=new boolean[p.length()+1][s.length()+1];
     	  match[0][0]=true;
-      for(int i=1;i<p.length();i++){
-    	 if(match[i-1][0]==true){
-    		 if(p.charAt(i-1)=='*'&&isMatch(s.charAt(0),p.charAt(i))){
-    			 match[i][0]=true;
-    		 }else if(p.charAt(i))
-    	 }else{
-    		 match[i][0]=false;
-    	 }
+    	  //初始化矩阵两边，空串匹配的情况
+      for(int i=1;i<p.length()+1;i++){
+    	  if(match[i-1][0]&&p.charAt(i-1)=='*')
+    		 match[i][0]=true;
+    	  else  match[i][0]=false;
+    	
       }
-      for(int j=1;j<s.length();j++){
-    	  if(p.charAt(0)=='*')
-    		  match[0][j]=true;
-    	  else
-    		  match[0][j]=false;
+      for(int j=1;j<s.length()+1;j++){
+      		  match[0][j]=false;
+    	
       }
     
-      
-      for(int i=1;i<p.length();i++){
-    	  for(int j=0;j<s.length();j++){
-    		  if()
+      int count=0;
+      for(int i=1;i<p.length()+1;i++){
+    	  //if(p.charAt(i-1)!='*')count++;
+    	  char pc=p.charAt(i-1);
+    	  for(int j=1;j<s.length()+1;j++){
+    		 char sc=s.charAt(j-1);
+    		 match[i][j]=false;
+    		 switch(pc){
+    		 case '?':
+    			 if(match[i-1][j-1]==true)
+    				 match[i][j]=true;
+    			 
+    			 break;
+    		 case '*':
+    			 if(match[i-1][j-1]||match[i][j-1]||match[i-1][j])
+    				 match[i][j]=true;
+    			 break;
+    		 default:
+    			 if(pc==sc){
+    				 if(match[i-1][j-1])
+    					 match[i][j]=true;
+    				 
+    			 }
+    		 }
     	  }
       }
-      return match[p.length()-1][s.length()-1];
+      return match[p.length()][s.length()];
     }
-    public boolean isMatch(char a,char p){
-    	if(a==p||p=='?'||p=='*')
-    		return true;
-    	else
-    		return false;
-    }
+
 
 }
