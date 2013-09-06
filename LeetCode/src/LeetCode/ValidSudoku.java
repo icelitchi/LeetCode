@@ -3,6 +3,7 @@ package LeetCode;
 public class ValidSudoku {
 
 
+	//我认为是错的，但是居然通过测试了！！！！
 	   public boolean isValidSudoku(char[][] board) {
 	  
 		   for(int n=0;n<9;n++){
@@ -15,25 +16,10 @@ public class ValidSudoku {
 	    		}
 	    	}
 		   
-	    	return solveSudokuR(board);
-	    }
-	   boolean solveSudokuR(char[][] board){
-		    
-	    	for(int n=0;n<9;n++){
-	    		for(int m=0;m<9;m++){
-	    			if(board[n][m]=='.'){
-	    				for(int k=0;k<9;k++){
-	    					board[n][m]=(char) ('1'+k);
-	    					if(isValid(board,n,m)&&solveSudokuR(board))
-	    						return true;
-	    				}
-	    				board[n][m]='.';
-	    				return false;
-	    			}
-	    		}
-	    	}
 	    	return true;
 	    }
+
+
 	   boolean isValid(char[][]board,int i, int j){
 	    	char c=board[i][j];
 	    	int boxi=(i/3)*3;
