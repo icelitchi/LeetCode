@@ -13,50 +13,66 @@ public class NQueens {
 //    }
 	//回溯
 //	   效率问题？
+//	  public ArrayList<String[]> solveNQueens(int n) {
+//	        // Start typing your Java solution below
+//	        // DO NOT write main() function
+//		  ArrayList<String[]> resultlist=new ArrayList<String[]> ();
+//		  for(int i=0;i<n;i++){
+//			  int[] previous={i};
+//			  testQ(previous,resultlist,n);
+//		  }
+//		  return resultlist;
+//	    }
+//	  
+//	  
+//	  private void testQ(int[] previous, ArrayList<String[]> resultlist,int n){
+//		  if(previous.length==n-1){
+//			  String[] result=new String[n];
+//			  StringBuffer sb=new StringBuffer(n);
+//			  for(int i=0;i<n;i++){
+//				  sb.append('.');
+//			  }
+//			  for(int i=0;i<n;i++){
+//				  int line=previous[i];
+//				 result[line]=sb.toString().substring(0,i)+'Q'+sb.toString().substring(i+1);
+//			  }
+//			  resultlist.add(result);
+//		  }else{
+//			  for(int i=0;i<n;i++){
+//				  
+//				  if(testValidNext(previous,i)){
+//					  int[] newPrevious=Arrays.copyOf(previous, previous.length+1);
+//					  newPrevious[newPrevious.length-1]=i;
+//					  testQ(newPrevious,resultlist,n);
+//				  }
+//				  
+//			  }
+//		  }
+//		  
+//	  }
+//	  private boolean testValidNext(int[] previous,int test ){
+//		  for(int i=0;i<previous.length;i++){
+//			  if(previous[i]==test||(Math.abs(previous[i]-test)==Math.abs(previous.length-i))){
+//				  return false;  
+//			  }
+//		  }
+//		  
+//		  return true;
+//	  }
+	
+	
 	  public ArrayList<String[]> solveNQueens(int n) {
-	        // Start typing your Java solution below
-	        // DO NOT write main() function
-		  ArrayList<String[]> resultlist=new ArrayList<String[]> ();
-		  for(int i=0;i<n;i++){
-			  int[] previous={i};
-			  testQ(previous,resultlist,n);
+		  ArrayList<String[]> solution=new ArrayList<String[]> ();
+		  int[] pos=new int[n];
+		  for(int i=1;i<=n;i++){
+			  pos[0]=i;
+			 testQ(pos,1,solution);
 		  }
-		  return resultlist;
-	    }
-	  
-	  
-	  private void testQ(int[] previous, ArrayList<String[]> resultlist,int n){
-		  if(previous.length==n-1){
-			  String[] result=new String[n];
-			  StringBuffer sb=new StringBuffer(n);
-			  for(int i=0;i<n;i++){
-				  sb.append('.');
-			  }
-			  for(int i=0;i<n;i++){
-				  int line=previous[i];
-				 result[line]=sb.toString().substring(0,i)+'Q'+sb.toString().substring(i+1);
-			  }
-			  resultlist.add(result);
-		  }else{
-			  for(int i=0;i<n;i++){
-				  
-				  if(testValidNext(previous,i)){
-					  int[] newPrevious=Arrays.copyOf(previous, previous.length+1);
-					  newPrevious[newPrevious.length-1]=i;
-					  testQ(newPrevious,resultlist,n);
-				  }
-				  
-			  }
-		  }
-		  
+		  return null;
 	  }
-	  private boolean testValidNext(int[] previous,int test ){
-		  for(int i=0;i<previous.length;i++){
-			  if(previous[i]==test||(Math.abs(previous[i]-test)==Math.abs(previous.length-i))){
-				  return false;  
-			  }
+	  void testQ(int[] pos,int i, ArrayList<String[]> solution){
+		  if(i==pos.length){
+			  
 		  }
-		  
-		  return true;
 	  }
 }
